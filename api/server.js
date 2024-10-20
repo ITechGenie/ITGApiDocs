@@ -1,6 +1,6 @@
 const express = require("express");
 const { parseSwagger } = require("./swaggerHandler");
-const { insertDoc, searchDocs } = require("./db");
+const { insertDoc, searchDocs, initDb } = require("./db");
 
 const app = express();
 app.use(express.json());
@@ -15,6 +15,11 @@ app.post("/api/parse-swagger", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Error parsing Swagger doc." });
   }
+});
+
+// Parse Swagger Doc and store in DB
+app.post("/api/init-db", (req, res) => {
+  return initDb(res);
 });
 
 // Search Swagger Docs
