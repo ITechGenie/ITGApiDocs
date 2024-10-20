@@ -1,0 +1,20 @@
+{
+  "name": "itgapidocs",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "api",
+    "ui"
+  ],
+  "scripts": {
+    "start": "concurrently \"npm:dev:ui\" \"npm:dev:api\"",
+    "dev:ui": "npm --prefix ui start",
+    "dev:api": "npm --prefix api start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  },
+  "author": "prakashm88",
+  "license": "ISC",
+  "description": "simple app to consolidate multiple openapi / swagger docs into a single searchable content and allow to search and access them"
+}
